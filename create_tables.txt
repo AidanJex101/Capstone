@@ -1,0 +1,85 @@
+CREATE TABLE IF NOT EXISTS Users (
+  user_id INTEGER PRIMARY KEY AUTOINCREMENT, 
+  first_name TEXT, 
+  last_name TEXT, 
+  phone TEXT, 
+  email TEXT UNIQUE,
+  password TEXT NOT NULL, 
+  active INTEGER DEFAULT 1, 
+  user_type TEXT DEFAULT "user", 
+  hire_date TEXT
+);
+
+CREATE TABLE IF NOT EXISTS Competencies (
+  competency_id INTEGER PRIMARY KEY AUTOINCREMENT, 
+  name TEXT UNIQUE, 
+  date_created TEXT
+);
+
+CREATE TABLE IF NOT EXISTS Assessments (
+  assessment_id INTEGER PRIMARY KEY AUTOINCREMENT, 
+  competency_id INTEGER REFERENCES Competencies (competency_id), 
+  name TEXT UNIQUE, 
+  date_created TEXT
+);
+
+CREATE TABLE IF NOT EXISTS AssessmentResults (
+  result_id INTEGER PRIMARY KEY AUTOINCREMENT, 
+  user_id INTEGER REFERENCES Users (user_id), 
+  assessment_id INTEGER REFERENCES Assessments (assessment_id), 
+  manager_id INTEGER REFERENCES Users (user_id), 
+  score INTEGER, 
+  date_taken TEXT
+);
+
+INSERT OR IGNORE INTO Competencies (name, date_created)
+VALUES ("Data Types", "12/01/2024");
+
+INSERT OR IGNORE INTO Competencies (name, date_created)
+VALUES ("Variables", "12/01/2024");
+
+INSERT OR IGNORE INTO Competencies (name, date_created)
+VALUES ("Functions", "12/01/2024");
+
+INSERT OR IGNORE INTO Competencies (name, date_created)
+VALUES ("Boolean Logic", "12/01/2024");
+
+INSERT OR IGNORE INTO Competencies (name, date_created)
+VALUES ("Conditionals", "12/01/2024");
+
+INSERT OR IGNORE INTO Competencies (name, date_created)
+VALUES ("Loops", "12/01/2024");
+
+INSERT OR IGNORE INTO Competencies (name, date_created)
+VALUES ("Data Structures", "12/01/2024");
+
+INSERT OR IGNORE INTO Competencies (name, date_created)
+VALUES ("Lists", "12/01/2024");
+
+INSERT OR IGNORE INTO Competencies (name, date_created)
+VALUES ("Dictionaries", "12/01/2024");
+
+INSERT OR IGNORE INTO Competencies (name, date_created)
+VALUES ("Working with Files", "12/01/2024");
+
+INSERT OR IGNORE INTO Competencies (name, date_created)
+VALUES ("Exception Handling", "12/01/2024");
+
+INSERT OR IGNORE INTO Competencies (name, date_created)
+VALUES ("Quality Assurance (QA)", "12/01/2024");
+
+INSERT OR IGNORE INTO Competencies (name, date_created)
+VALUES ("Object-Oriented Programming", "12/01/2024");
+
+INSERT OR IGNORE INTO Competencies (name, date_created)
+VALUES ("Recursion", "12/01/2024");
+
+INSERT OR IGNORE INTO Competencies (name, date_created)
+VALUES ("Databases", "12/01/2024");
+
+INSERT OR IGNORE INTO Users (first_name, last_name, phone, email, user_type, hire_date)
+VALUES ("Bob", "Ross", "8013333333", "email@email.gov", "manager", "2024-12-01");
+
+
+
+
